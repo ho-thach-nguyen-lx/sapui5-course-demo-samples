@@ -61,10 +61,6 @@
           "bundleName": "demo.example.i18n.i18n"
         }
       },
-      "globalUI": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/globalUI.json"
-      },
       "": {
         "dataSource": "mainService",
         "preload": true,

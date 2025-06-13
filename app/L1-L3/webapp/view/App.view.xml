@@ -4,7 +4,6 @@
     <SplitApp id="app">
         <detailPages>
             <mvc:XMLView viewName="demo.example.view.StoreDetails" />
-
         </detailPages>
     </SplitApp>
 </mvc:View>

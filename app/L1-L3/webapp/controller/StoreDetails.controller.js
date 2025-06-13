@@ -40,6 +40,7 @@ sap.ui.define(
         BusyIndicator.show();
 
         const uiModel = new JSONModel({
+          selectedStore: "",
           search: "",
           selectedStatus: "ALL",
           sortStates: {
@@ -106,8 +107,8 @@ sap.ui.define(
       onAttachPatternMatched(event) {
         const query = event.getParameters().arguments["?query"] ?? {};
 
-        this.getOwnerComponent()
-          .getModel("globalUI")
+        this.getView()
+          .getModel("ui")
           .setProperty("/selectedStore", query.storeId);
 
         if (!query.storeId) {
