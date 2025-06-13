@@ -61,6 +61,10 @@
           "bundleName": "demo.example.i18n.i18n"
         }
       },
+      "globalUI": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/globalUI.json"
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -81,15 +85,13 @@
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
+        "controlAggregation": "masterPages",
         "controlId": "app",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
         "path": "demo.example.view",
-        "bypassed": {
-          "target": "NotFound"
-        },
+
         "async": true,
         "viewPath": "demo.example.view"
       },
@@ -97,35 +99,13 @@
         {
           "name": "StoresList",
           "pattern": ":?query:",
-          "target": ["StoresList"]
-        },
-        {
-          "name": "StoreDetails",
-          "pattern": "store/{ID}",
-          "target": ["StoreDetails"]
-        },
-        {
-          "name": "ProductDetails",
-          "pattern": "store/{storeId}/product/{productId}",
-          "target": ["ProductDetails"]
+          "target": "StoresList"
         }
       ],
       "targets": {
         "StoresList": {
           "id": "StoresList",
           "name": "StoresList"
-        },
-        "StoreDetails": {
-          "id": "StoreDetails",
-          "name": "StoreDetails"
-        },
-        "ProductDetails": {
-          "id": "ProductDetails",
-          "name": "ProductDetails"
-        },
-        "NotFound": {
-          "id": "NotFound",
-          "name": "NotFound"
         }
       }
     },

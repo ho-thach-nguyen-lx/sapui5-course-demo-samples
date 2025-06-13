@@ -1,0 +1,82 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }">
+    <Dialog title="Create new store"
+        beforeOpen="onCreateStoreDialogBeforeOpen"
+        afterClose="onDialogAfterClose">
+        <f:SimpleForm>
+            <Label text="Name"
+                required="true" />
+            <Input id="nameInput"
+                value="{
+                    path: 'Name',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }" />
+
+            <Label text="Email"
+                required="true" />
+            <Input id="emailInput"
+                value="{
+                    path: 'Email',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        search: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'
+                    }
+                }"
+                type="Email" />
+
+            <Label text="Phone"
+                required="true" />
+            <Input id="phoneNumberInput"
+                value="{
+                    path: 'PhoneNumber',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }"
+                type="Tel" />
+
+            <Label text="Address"
+                required="true" />
+            <Input id="addressInput"
+                value="{
+                    path: 'Address',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }" />
+
+            <Label text="Established"
+                required="true" />
+            <DatePicker id="establishedInput"
+                value="{Established}" />
+
+            <Label text="Floor Area"
+                required="true" />
+            <Input id="floorAreaInput"
+                value="{
+                    path: 'FloorArea',
+                    type: 'sap.ui.model.type.Integer',
+                    constraints: {
+                        minimum: 1,
+                        maximum: 999
+                    }
+                }"
+                type="Number" />
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="Create"
+                type="Emphasized"
+                press="onCreateStoreButtonPress" />
+            <Button text="Cancel"
+                press="onCloseCreateStoreDialogButtonPress" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

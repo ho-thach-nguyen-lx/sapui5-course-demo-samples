@@ -1,5 +1,10 @@
-<mvc:View displayBlock="true"
+<mvc:View controllerName="demo.example.controller.StoresList"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <App id="app" />
+    <SplitApp id="app">
+        <detailPages>
+            <mvc:XMLView viewName="demo.example.view.StoreDetails" />
+
+        </detailPages>
+    </SplitApp>
 </mvc:View>

@@ -1,9 +1,25 @@
-<mvc:View controllerName="demo.example.controller.NotFound"
+<mvc:View xmlns:f="sap.f"
+    controllerName="demo.example.controller.StoreDetails"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <MessagePage title="{i18n>notFoundTitle}"
-        text="{i18n>notFoundText}"
-        description="{i18n>notFoundDescription}"
-        showNavButton="true"
-        navButtonPress="onNavBack" />
+    <f:DynamicPage >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Store is not selected" />
+                </f:heading>
+
+            </f:DynamicPageTitle>
+        </f:title>
+
+
+
+        <f:content>
+
+
+        </f:content>
+
+
+    </f:DynamicPage>
 </mvc:View>

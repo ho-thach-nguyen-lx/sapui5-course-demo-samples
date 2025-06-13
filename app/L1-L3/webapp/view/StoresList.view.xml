@@ -1,11 +1,55 @@
-<mvc:View controllerName="demo.example.controller.StoresList"
+<mvc:View xmlns:f="sap.f"
+    controllerName="demo.example.controller.StoresList"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page title="Stores List">
-        <content>
-            <Button text="Go to Store Details"
-                press="onNavigateToStoreDetails"
-                type="Emphasized" />
-        </content>
-    </Page>
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Stores List" />
+                </f:heading>
+
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <SearchField showRefreshButton="true"
+                    search="onSearchFieldSearch" />
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <List id="storesList"
+                items="{
+					path: '/Stores',
+					sorter: {
+                        path: 'createdAt',
+                        descending: true
+                    },
+                    parameters: {
+                        $$updateGroupId: 'storesList'
+                    }
+				}">
+                <ObjectListItem title="{Name}"
+                    type="Navigation"
+                    press="onObjectListItemPress"
+                    number="{FloorArea}"
+                    numberUnit="sq.m">
+                    <attributes>
+                        <ObjectAttribute text="{Address}" />
+                    </attributes>
+                </ObjectListItem>
+            </List>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button type="Emphasized"
+                    text="Create"
+                    press="onOpenDialogButtonPress" />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
 </mvc:View>
