@@ -1,0 +1,28 @@
+modules = ["nodejs-20", "web"]
+run = "npm run start"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm run start"]
+
+[[ports]]
+localPort = 4004
+externalPort = 80
+
+[workflows]
+runButton = "Deploy and Watch"
+
+[[workflows.workflow]]
+name = "Deploy and Watch"
+author = 43480999
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cds deploy --to sqlite"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cds watch"

@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }">
+    <Dialog title="{= ${ID} ? 'Edit Product' : 'Create new product' }"
+        beforeOpen="onCreateProductDialogBeforeOpen"
+        afterClose="onProductDialogAfterClose">
+        <f:SimpleForm>
+            <Label text="Name"
+                required="true" />
+            <Input id="productNameInput"
+                value="{
+                    path: 'Name',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }" />
+
+            <Label text="Price"
+                required="true" />
+            <Input id="productPriceInput"
+                value="{
+                    path: 'Price_amount',
+                    type: 'sap.ui.model.type.Float',
+                    constraints: {
+                        minimum: 0
+                    }
+                }" />
+
+            <Label text="Specs"
+                required="true" />
+            <TextArea id="productSpecsInput"
+                value="{
+                    path: 'Specs',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }"
+                rows="3" />
+            <Label text="Rating"
+                required="true" />
+            <Input id="productRatingInput"
+                value="{
+                    path: 'Rating',
+                    type: 'sap.ui.model.type.Integer',
+                    constraints: {
+                        minimum: 1,
+                        maximum: 5
+                    }
+                }"
+                type="Number" />
+            <Label text="Supplier Info"
+                required="true" />
+            <TextArea id="productSupplierInput"
+                value="{SupplierInfo}"
+                rows="3" />
+
+            <Label text="Country of Origin"
+                required="true" />
+            <Input id="productCountryInput"
+                value="{MadeIn}" />
+
+            <Label text="Prod. Company"
+                required="true" />
+            <Input id="productCompanyInput"
+                value="{ProductionCompanyName}" />
+
+            <Label text="Status"
+                required="true" />
+            <Select id="productStatusSelect"
+                selectedKey="{Status}"
+                items="{
+                    path: 'ui>/statusOptions'
+                }">
+                <core:Item key="{ui>key}"
+                    text="{ui>text}" />
+            </Select>
+
+        </f:SimpleForm>
+
+        <buttons>
+            <Button text="{= ${ID} ? 'Update' : 'Create' }"
+                type="Emphasized"
+                press="onCreateProductButtonPress" />
+            <Button text="Cancel"
+                press="onCloseCreateProductDialogButtonPress" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

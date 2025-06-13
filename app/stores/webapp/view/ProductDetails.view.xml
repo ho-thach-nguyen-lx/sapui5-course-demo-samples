@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:f="sap.f"
+    controllerName="demo.example.controller.ProductDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m">
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Product Details" />
+                </f:heading>
+                <f:breadcrumbs>
+                    <Breadcrumbs>
+                        <Link text="Stores"
+                            href="http://localhost:4004/stores/webapp/index.html#/" />
+                        <Link text="Store Details"
+                            press="onStoreDetailsPress" />
+                        <Link text="Product Details" />
+                    </Breadcrumbs>
+                </f:breadcrumbs>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectStatus title="Price"
+                            state="None"
+                            text="{Price_amount} {Price_currency}" />
+                        <ObjectStatus title="Rating"
+                            text="{Rating}"
+                            state="None" />
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <ObjectStatus title="Established Date"
+                            text="{path: 'createdAt'}"
+                            state="None"
+                            class="sapUiSmallMarginEnd" />
+                        <ObjectStatus title="MadeIn"
+                            text="{MadeIn}"
+                            state="None" />
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <ObjectStatus title="ProductionCompanyName"
+                            text="{ProductionCompanyName}"
+                            state="None" />
+                        <ObjectStatus title="Status"
+                            text="{= {
+                                    OK: 'Ok',
+                                    OUT_OF_STOCK: 'Out of Stock',
+                                    STORAGE: 'Storage'
+                                }[${Status}]
+                            }"
+                            inverted="true"
+                            state="{= {
+                                    OK: 'Success',
+                                    OUT_OF_STOCK: 'Error',
+                                    STORAGE: 'Warning'
+                                }[${Status}]
+                            }" />
+                    </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+                <VBox class="sapUiSmallMarginTop">
+                    <layout:VerticalLayout width="auto">
+                        <ObjectAttribute title="Specs"
+                            text="{Specs}"
+                            active="false" />
+                        <ObjectAttribute title="SupplierInfo"
+                            text="{SupplierInfo}"
+                            active="false" />
+                    </layout:VerticalLayout>
+                </VBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox>
+                <VBox gap="1rem">
+                    <HBox gap="1rem"
+                        alignItems="Start">
+                        <VBox>
+                            <Label text="Author"
+                                labelFor="authorInput" />
+                            <Input id="authorInput"
+                                placeholder="Your name"
+                                width="200px"
+                                value="{ui>/commentForm/author}" />
+                        </VBox>
+                        <VBox>
+                            <Label text="Rating"
+                                labelFor="ratingIndicator" />
+                            <RatingIndicator id="ratingIndicator"
+                                maxValue="5"
+                                value="{ui>/commentForm/rating}" />
+                        </VBox>
+                    </HBox>
+                    <FeedInput id="commentInput"
+                        placeholder="Write a comment..."
+                        value="{ui>/commentForm/message}"
+                        post="onPostComment" />
+                </VBox>
+
+                <List id="commentsList"
+                    items="{
+                        path: 'Comment',
+                        sorter: {
+                            path: 'createdAt',
+                            descending: true
+                        }
+                    }">
+                    <FeedListItem sender="{Author}"
+                        senderPress="onAuthorPress"
+                        info="Rating: {Rating}"
+                        timestamp="{createdAt}"
+                        text="{Message}"
+                        convertLinksToAnchorTags="All" />
+                </List>
+            </VBox>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

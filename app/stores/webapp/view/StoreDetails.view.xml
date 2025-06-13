@@ -1,0 +1,196 @@
+<mvc:View xmlns:f="sap.f"
+    controllerName="demo.example.controller.StoreDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Store's Details" />
+                </f:heading>
+                <f:breadcrumbs>
+                    <Breadcrumbs>
+                        <Link text="Stores"
+                            href="http://localhost:4004/stores/webapp/index.html#/" />
+                        <Link text="Stores's Details" />
+                    </Breadcrumbs>
+                </f:breadcrumbs>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <HBox gap="20px">
+                    <VBox>
+                        <ObjectAttribute title="Email"
+                            text="{= ${Email} || '-'}" />
+                        <ObjectAttribute title="Phone Number"
+                            text="{= ${PhoneNumber} || '-'}" />
+                        <ObjectAttribute title="Address"
+                            text="{= ${Address} || '-'}" />
+                    </VBox>
+
+                    <VBox>
+                        <ObjectAttribute title="Established"
+                            text="{= ${Established} || '-'}" />
+                        <ObjectAttribute title="Floor Area"
+                            text="{= ${FloorArea} || '-'}" />
+                    </VBox>
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <IconTabBar id="iconTabBar"
+                selectedKey="{ui>/selectedStatus}"
+                select="onIconTabBarSelect">
+                <items>
+                    <IconTabFilter id="allProductsIconTabFilter"
+                        key="ALL"
+                        showAll="true"
+                        text="All" />
+                    <IconTabFilter id="okIconTabFilter"
+                        key="OK"
+                        icon="sap-icon://message-success"
+                        iconColor="Positive"
+                        text="Ok" />
+                    <IconTabFilter id="storageIconTabFilter"
+                        key="STORAGE"
+                        icon="sap-icon://message-warning"
+                        iconColor="Critical"
+                        text="Storage" />
+                    <IconTabFilter id="outOfStockIconTabFilter"
+                        key="OUT_OF_STOCK"
+                        icon="sap-icon://message-error"
+                        iconColor="Negative"
+                        text="Out of Stock" />
+                </items>
+                <content>
+                    <Table id="productsTable"
+                        updateFinished="onUpdateFinished"
+                        items="{
+                            path: 'Products',
+                            sorter: {
+                                path: 'createdAt',
+                                descending: true
+                            },
+                            parameters: {
+                                $select: 'Status',
+                                $$updateGroupId: 'productsTable',
+                                $$ownRequest: true
+                            }
+                        }">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Products" />
+                                <ToolbarSpacer />
+                                <SearchField value="{ui>/search}"
+                                    search="onProductSearchFieldSearch"
+                                    width="auto" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Name" />
+                                    <Button icon="{path: 'ui>/sortStates/Name'}"
+                                        press="onSortButtonPress('Name')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Price" />
+                                    <Button icon="{path: 'ui>/sortStates_amount'}"
+                                        press="onSortButtonPress('Price_amount')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Specs" />
+                                    <Button icon="{path: 'ui>/sortStates/Specs'}"
+                                        press="onSortButtonPress('Specs')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Supplier Info" />
+                                    <Button icon="{path: 'ui>/sortStates/SupplierInfo'}"
+                                        press="onSortButtonPress('SupplierInfo')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Country of Origin" />
+                                    <Button icon="{path: 'ui>/sortStates/MadeIn'}"
+                                        press="onSortButtonPress('MadeIn')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Prod. Company" />
+                                    <Button icon="{path: 'ui>/sortStates/ProductionCompanyName'}"
+                                        press="onSortButtonPress('ProductionCompanyName')" />
+                                </HBox>
+                            </Column>
+                            <Column>
+                                <HBox alignItems="Center"
+                                    gap="10px">
+                                    <Text text="Rating" />
+                                    <Button icon="{path: 'ui>/sortStates/Rating'}"
+                                        press="onSortButtonPress('Rating')" />
+                                </HBox>
+                            </Column>
+                            <Column></Column>
+                        </columns>
+
+                        <ColumnListItem type="Navigation"
+                            press="onProductItemPress">
+
+                            <ObjectIdentifier title="{Name}" />
+                            <ObjectNumber number="{Price_amount}"
+                                unit="{Price_currency}" />
+                            <Text text="{Specs}"
+                                wrapping="false"
+                                maxLines="1" />
+                            <Text text="{SupplierInfo}"
+                                wrapping="false"
+                                maxLines="1" />
+                            <Text text="{MadeIn}" />
+                            <Text text="{ProductionCompanyName}" />
+                            <RatingIndicator maxValue="5"
+                                value="{Rating}"
+                                editable="false"
+                                iconSize="1rem" />
+                            <HBox gap="10px">
+                                <Button icon="sap-icon://edit"
+                                    press="onProductEditPress" />
+                                <Button icon="sap-icon://delete"
+                                    press="onProductDeleteButtonPress" />
+                            </HBox>
+
+                        </ColumnListItem>
+
+                    </Table>
+                </content>
+            </IconTabBar>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button type="Emphasized"
+                    text="Create"
+                    press="onCreateProductDialogPress" />
+                <Button text="Delete"
+                    press="onConfirmStoreDeleteButtonPress" />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
