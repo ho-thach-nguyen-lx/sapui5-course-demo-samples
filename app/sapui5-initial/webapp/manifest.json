@@ -1,0 +1,120 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "demo.example",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.3",
+      "toolsId": "5244b600-6234-4eaf-90b4-bb785384a6ae"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.136.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "demo.example.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "demo.example.view",
+        "bypassed": {
+          "target": "NotFound"
+        },
+        "async": true,
+        "viewPath": "demo.example.view"
+      },
+      "routes": [
+        {
+          "name": "StoresList",
+          "pattern": ":?query:",
+          "target": ["StoresList"]
+        },
+        {
+          "name": "StoreDetails",
+          "pattern": "store/{ID}",
+          "target": ["StoreDetails"]
+        },
+        {
+          "name": "ProductDetails",
+          "pattern": "product/{ID}",
+          "target": ["ProductDetails"]
+        }
+      ],
+      "targets": {
+        "StoresList": {
+          "id": "StoresList",
+          "name": "StoresList"
+        },
+        "StoreDetails": {
+          "id": "StoreDetails",
+          "name": "StoreDetails"
+        },
+        "ProductDetails": {
+          "id": "ProductDetails",
+          "name": "ProductDetails"
+        },
+        "NotFound": {
+          "id": "NotFound",
+          "name": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "demo.example.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<mvc:View controllerName="demo.example.controller.ProductDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Product Details">
+        <content>
+            <VBox alignItems="Center"
+                justifyContent="Center"
+                height="100%">
+                <Button text="Back to Store Details"
+                    press="onNavigateToStoreDetails"
+                    type="Emphasized" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
