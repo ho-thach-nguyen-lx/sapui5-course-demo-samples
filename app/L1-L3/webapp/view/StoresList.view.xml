@@ -1,0 +1,11 @@
+<mvc:View controllerName="demo.example.controller.StoresList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Stores List">
+        <content>
+            <Button text="Go to Store Details"
+                press="onNavigateToStoreDetails"
+                type="Emphasized" />
+        </content>
+    </Page>
+</mvc:View>
