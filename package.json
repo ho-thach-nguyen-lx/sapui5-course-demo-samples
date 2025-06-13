@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-demo.example": "cds watch --open demo.example/webapp/index.html?sap-ui-xx-viewCache=false"
+    "deploy:db": "rm -rf db.sqlite && cds deploy"
   },
   "cds": {
     "requires": {
