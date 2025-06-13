@@ -76,9 +76,14 @@ sap.ui.define(
       },
 
       onCloseCreateStoreDialogButtonPress(event) {
-        event.getSource().getBindingContext().delete();
-
         this._dialog.close();
+      },
+
+      onDialogAfterClose() {
+        const bindingContext = this._dialog.getBindingContext();
+        if (bindingContext) {
+          bindingContext.delete();
+        }
       },
 
       onObjectListItemPress(event) {
