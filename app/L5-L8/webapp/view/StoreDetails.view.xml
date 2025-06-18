@@ -12,7 +12,7 @@
                 <f:breadcrumbs>
                     <Breadcrumbs>
                         <Link text="Stores"
-                            href="http://localhost:4004/stores/webapp/index.html#/" />
+                            href="http://localhost:4004/L5-L8/webapp/index.html#/" />
                         <Link text="Stores's Details" />
                     </Breadcrumbs>
                 </f:breadcrumbs>
@@ -187,8 +187,11 @@
                 <ToolbarSpacer />
                 <Button type="Emphasized"
                     text="Create"
+                    icon="sap-icon://add"
                     press="onCreateProductDialogPress" />
                 <Button text="Delete"
+                    icon="sap-icon://delete"
+                    type="Negative"
                     press="onConfirmStoreDeleteButtonPress" />
             </OverflowToolbar>
         </f:footer>

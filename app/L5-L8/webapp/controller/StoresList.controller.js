@@ -52,12 +52,13 @@ sap.ui.define(
         BusyIndicator.show();
 
         this.getModel().submitBatch("storesList");
-        this.byId("storesList").getBinding("items").refresh("storesList");
 
         bindingContext
           .created()
           .then(() => {
             this._dialog.close();
+
+            this.byId("storesList").getBinding("items").refresh();
           })
           .catch((err) => {
             MessageBox.error("Failed to create a new store", { details: err });
@@ -70,7 +71,7 @@ sap.ui.define(
       onCreateStoreDialogBeforeOpen(event) {
         const bindingContext = this.byId("storesList")
           .getBinding("items")
-          .create();
+          .create({}, true);
 
         event.getSource().setBindingContext(bindingContext);
       },

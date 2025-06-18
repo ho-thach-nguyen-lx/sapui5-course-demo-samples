@@ -13,7 +13,7 @@
                 <f:breadcrumbs>
                     <Breadcrumbs>
                         <Link text="Stores"
-                            href="http://localhost:4004/stores/webapp/index.html#/" />
+                            href="http://localhost:4004/L5-L8/webapp/index.html#/" />
                         <Link text="Store Details"
                             press="onStoreDetailsPress" />
                         <Link text="Product Details" />
@@ -79,22 +79,24 @@
             <VBox>
                 <VBox gap="1rem">
                     <HBox gap="1rem"
-                        alignItems="Start">
-                        <VBox>
+                        alignItems="Center">
+                        <HBox gap="1rem"
+                            alignItems="Center">
                             <Label text="Author"
                                 labelFor="authorInput" />
                             <Input id="authorInput"
                                 placeholder="Your name"
                                 width="200px"
                                 value="{ui>/commentForm/author}" />
-                        </VBox>
-                        <VBox>
+                        </HBox>
+                        <HBox gap="1rem"
+                            alignItems="Center">
                             <Label text="Rating"
                                 labelFor="ratingIndicator" />
                             <RatingIndicator id="ratingIndicator"
                                 maxValue="5"
                                 value="{ui>/commentForm/rating}" />
-                        </VBox>
+                        </HBox>
                     </HBox>
                     <FeedInput id="commentInput"
                         placeholder="Write a comment..."

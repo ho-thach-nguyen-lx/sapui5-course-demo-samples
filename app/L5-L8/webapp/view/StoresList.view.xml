@@ -52,6 +52,7 @@
                 <ToolbarSpacer />
                 <Button type="Emphasized"
                     text="Create"
+                    icon="sap-icon://add"
                     press="onOpenDialogButtonPress" />
             </OverflowToolbar>
         </f:footer>
