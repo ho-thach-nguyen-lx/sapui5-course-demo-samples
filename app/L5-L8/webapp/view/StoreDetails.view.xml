@@ -170,8 +170,10 @@
                                 iconSize="1rem" />
                             <HBox gap="10px">
                                 <Button icon="sap-icon://edit"
+                                    type="Transparent"
                                     press="onProductEditPress" />
                                 <Button icon="sap-icon://delete"
+                                    type="Transparent"
                                     press="onProductDeleteButtonPress" />
                             </HBox>
 
