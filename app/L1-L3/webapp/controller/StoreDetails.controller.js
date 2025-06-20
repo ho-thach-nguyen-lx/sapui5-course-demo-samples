@@ -40,6 +40,7 @@ sap.ui.define(
         BusyIndicator.show();
 
         const uiModel = new JSONModel({
+          enhanced: false,
           selectedStore: "",
           search: "",
           selectedStatus: "ALL",
@@ -110,6 +111,11 @@ sap.ui.define(
         this.getView()
           .getModel("ui")
           .setProperty("/selectedStore", query.storeId);
+
+        // Set enhanced property based on query parameter
+        this.getView()
+          .getModel("ui")
+          .setProperty("/enhanced", query.enhanced === "true");
 
         if (!query.storeId) {
           BusyIndicator.hide();

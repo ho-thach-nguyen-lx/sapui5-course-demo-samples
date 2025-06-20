@@ -36,7 +36,7 @@
         </f:header>
 
         <f:content>
-            <VBox>
+            <VBox height="100%">
                 <IconTabBar id="iconTabBar"
                     visible="{= !!${ui>/selectedStore}}"
                     selectedKey="{ui>/selectedStatus}"
@@ -82,6 +82,7 @@
                                     <Title text="Products" />
                                     <ToolbarSpacer />
                                     <SearchField value="{ui>/search}"
+                                        visible="{ui>/enhanced}"
                                         search="onProductSearchFieldSearch"
                                         width="auto" />
                                 </Toolbar>
@@ -92,6 +93,7 @@
                                         gap="10px">
                                         <Text text="Name" />
                                         <Button icon="{path: 'ui>/sortStates/Name'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('Name')" />
                                     </HBox>
                                 </Column>
@@ -100,6 +102,7 @@
                                         gap="10px">
                                         <Text text="Price" />
                                         <Button icon="{path: 'ui>/sortStates/Price_amount'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('Price_amount')" />
                                     </HBox>
                                 </Column>
@@ -108,6 +111,7 @@
                                         gap="10px">
                                         <Text text="Specs" />
                                         <Button icon="{path: 'ui>/sortStates/Specs'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('Specs')" />
                                     </HBox>
                                 </Column>
@@ -116,6 +120,7 @@
                                         gap="10px">
                                         <Text text="Supplier Info" />
                                         <Button icon="{path: 'ui>/sortStates/SupplierInfo'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('SupplierInfo')" />
                                     </HBox>
                                 </Column>
@@ -124,6 +129,7 @@
                                         gap="10px">
                                         <Text text="Country of Origin" />
                                         <Button icon="{path: 'ui>/sortStates/MadeIn'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('MadeIn')" />
                                     </HBox>
                                 </Column>
@@ -132,6 +138,7 @@
                                         gap="10px">
                                         <Text text="Prod. Company" />
                                         <Button icon="{path: 'ui>/sortStates/ProductionCompanyName'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('ProductionCompanyName')" />
                                     </HBox>
                                 </Column>
@@ -140,14 +147,14 @@
                                         gap="10px">
                                         <Text text="Rating" />
                                         <Button icon="{path: 'ui>/sortStates/Rating'}"
+                                            visible="{ui>/enhanced}"
                                             press="onSortButtonPress('Rating')" />
                                     </HBox>
                                 </Column>
                                 <Column></Column>
                             </columns>
 
-                            <ColumnListItem type="Navigation"
-                                press="onProductItemPress">
+                            <ColumnListItem >
 
                                 <ObjectIdentifier title="{Name}" />
                                 <ObjectNumber number="{Price_amount}"
@@ -176,8 +183,21 @@
                         </Table>
                     </content>
                 </IconTabBar>
-                <Text visible="{= !${ui>/selectedStore}}"
-                    text="no data" />
+                <VBox visible="{= !${ui>/selectedStore}}"
+                    justifyContent="Center"
+                    alignItems="Center"
+                    height="100%"
+                    gap="2rem">
+                    <core:Icon src="sap-icon://retail-store"
+                        size="8rem" />
+                    <VBox justifyContent="Center"
+                        alignItems="Center">
+                        <Title text="No store selected"
+                            class="sapUiTinyMarginTop" />
+                        <Text text="Please select a store to proceed"
+                            class="sapUiTinyMarginTop" />
+                    </VBox>
+                </VBox>
             </VBox>
         </f:content>
 
@@ -186,8 +206,11 @@
                 <ToolbarSpacer />
                 <Button type="Emphasized"
                     text="Create"
+                    icon="sap-icon://add"
                     press="onCreateProductDialogPress" />
                 <Button text="Delete"
+                    icon="sap-icon://delete"
+                    type="Negative"
                     press="onConfirmStoreDeleteButtonPress" />
             </OverflowToolbar>
         </f:footer>

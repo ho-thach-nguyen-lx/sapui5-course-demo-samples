@@ -38,6 +38,8 @@
                     numberUnit="sq.m">
                     <attributes>
                         <ObjectAttribute text="{Address}" />
+                        <ObjectAttribute text="{FloorArea}"
+                            visible="false" />
                     </attributes>
                 </ObjectListItem>
             </List>
@@ -48,6 +50,7 @@
                 <ToolbarSpacer />
                 <Button type="Emphasized"
                     text="Create"
+                    icon="sap-icon://add"
                     press="onOpenDialogButtonPress" />
             </OverflowToolbar>
         </f:footer>
