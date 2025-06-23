@@ -52,11 +52,11 @@ sap.ui.define(
         BusyIndicator.show();
 
         this.getModel().submitBatch("storesList");
-        this.byId("storesList").getBinding("items").refresh("storesList");
 
         bindingContext
           .created()
           .then(() => {
+            this.byId("storesList").getBinding("items").refresh("storesList");
             this._dialog.close();
           })
           .catch((err) => {
@@ -70,7 +70,7 @@ sap.ui.define(
       onCreateStoreDialogBeforeOpen(event) {
         const bindingContext = this.byId("storesList")
           .getBinding("items")
-          .create();
+          .create({}, true);
 
         event.getSource().setBindingContext(bindingContext);
       },
