@@ -190,13 +190,13 @@
                     alignItems="Center"
                     height="100%"
                     gap="2rem">
-                    <core:Icon src="sap-icon://retail-store"
+                    <core:Icon src="{= ${ui>/notFound} ? 'sap-icon://message-error' : 'sap-icon://retail-store'}"
                         size="8rem" />
                     <VBox justifyContent="Center"
                         alignItems="Center">
-                        <Title text="No store selected"
+                        <Title text="{= ${ui>/notFound} ? 'Store not found' : 'No store selected'}"
                             class="sapUiTinyMarginTop" />
-                        <Text text="Please select a store to proceed"
+                        <Text text="{= ${ui>/notFound} ? 'Please try again' : 'Please select a store to proceed'}"
                             class="sapUiTinyMarginTop" />
                     </VBox>
                 </VBox>

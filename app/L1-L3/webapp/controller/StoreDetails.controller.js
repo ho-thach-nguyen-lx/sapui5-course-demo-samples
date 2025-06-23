@@ -42,6 +42,7 @@ sap.ui.define(
         const uiModel = new JSONModel({
           enhanced: false,
           selectedStore: "",
+          notFound: false,
           search: "",
           selectedStatus: "ALL",
           sortStates: {
@@ -140,6 +141,8 @@ sap.ui.define(
         BusyIndicator.hide();
 
         if (error) {
+          this.getView().getModel("ui").setProperty("/selectedStore", false);
+          this.getView().getModel("ui").setProperty("/notFound", true);
           this.getRouter()
             .getTargets()
             .display("NotFound", { fromTarget: "StoreDetails" });
