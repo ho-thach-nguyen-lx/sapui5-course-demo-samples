@@ -30,10 +30,11 @@
                     parameters: {
                         $$updateGroupId: 'storesList'
                     }
-				}">
+				}"
+                mode="SingleSelectMaster"
+                selectionChange="onObjectListItemPress">
                 <ObjectListItem title="{Name}"
                     type="Navigation"
-                    press="onObjectListItemPress"
                     number="{FloorArea}"
                     numberUnit="sq.m">
                     <attributes>

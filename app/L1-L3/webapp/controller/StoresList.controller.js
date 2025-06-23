@@ -56,7 +56,7 @@ sap.ui.define(
         bindingContext
           .created()
           .then(() => {
-            this.byId("storesList").getBinding("items").refresh("storesList");
+            this.byId("storesList").getBinding("items").refresh();
             this._dialog.close();
           })
           .catch((err) => {
@@ -87,7 +87,10 @@ sap.ui.define(
       },
 
       onObjectListItemPress(event) {
-        const ID = event.getSource().getBindingContext().getProperty("ID");
+        const ID = event
+          .getParameter("listItem")
+          .getBindingContext()
+          .getProperty("ID");
 
         this.getRouter().navTo("StoresList", {
           "?query": {

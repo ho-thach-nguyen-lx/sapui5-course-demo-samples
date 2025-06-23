@@ -198,9 +198,11 @@ sap.ui.define(
           .then(() => {
             MessageToast.show("Store successfully deleted");
 
-            this.getRouter().navTo("StoresList", {
-              closeOnBrowserNavigation: false,
-            });
+            sap.ui
+              .getCore()
+              .byId("container-L1-L3---StoresList--storesList")
+              .getBinding("items")
+              .refresh();
           })
           .catch((err) => {
             MessageBox.error("Failed to delete the store", { details: err });

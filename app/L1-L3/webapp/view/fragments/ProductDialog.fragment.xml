@@ -54,18 +54,36 @@
             <Label text="Supplier Info"
                 required="true" />
             <TextArea id="productSupplierInput"
-                value="{SupplierInfo}"
+                value="{
+                    path: 'SupplierInfo',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }"
                 rows="3" />
 
             <Label text="Country of Origin"
                 required="true" />
             <Input id="productCountryInput"
-                value="{MadeIn}" />
+                value="{
+                    path: 'MadeIn',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }" />
 
             <Label text="Prod. Company"
                 required="true" />
             <Input id="productCompanyInput"
-                value="{ProductionCompanyName}" />
+                value="{
+                    path: 'ProductionCompanyName',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }
+                }" />
 
             <Label text="Status"
                 required="true" />
